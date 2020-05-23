@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-b01-. -->
+<xs:schema version="1.0" targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/fornecedor" xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans/fornecedor"
+	xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" xmlns:ns2="http://lemontech.com.br/selfbooking/wsselfbooking/common/types"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="beansTypes.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/common/types" schemaLocation="commonTypes.xsd" />
+
+	<xs:complexType name="fornecedorRef">
+		<xs:sequence>
+			<xs:element name="identificadorBackofficeFornecedor" type="ns2:identificadorBackoffice" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="fornecedorClienteRef">
+		<xs:complexContent>
+			<xs:extension base="tns:fornecedorRef">
+				<xs:sequence>
+					<xs:element name="identificadorBackofficeCliente" type="ns2:identificadorBackoffice" minOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="fornecedor">
+		<xs:complexContent>
+			<xs:extension base="tns:fornecedorRef">
+				<xs:sequence>
+					<xs:element name="nomeFornecedor" type="ns2:descricaoElemento100" minOccurs="1"  />
+					<xs:element name="razaoSocial" type="ns2:descricaoElemento100" minOccurs="1"  />
+					<xs:element name="cnpj" type="xs:string" minOccurs="0" />
+					<xs:element name="pais" type="ns2:descricaoElemento50" minOccurs="1"  />
+					<xs:element name="uf" minOccurs="1" >
+						<xs:simpleType >
+							<xs:restriction base="xs:string">
+								<xs:minLength value="0"></xs:minLength>
+								<xs:maxLength value="50"></xs:maxLength>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="cidade" type="ns2:descricaoElemento100" minOccurs="1"  />
+					<xs:element name="bairro" type="ns2:descricaoElemento100" minOccurs="1"  />
+					<xs:element name="endereco" type="ns2:descricaoElemento255" minOccurs="1"  />
+					<xs:element name="complementoEndereco" type="ns2:descricaoElemento255" minOccurs="0"  />
+					<xs:element name="ddiTelefone" type="ns2:ddi" minOccurs="1"  />
+					<xs:element name="dddTelefone" type="ns2:ddd" minOccurs="1"  />
+					<xs:element name="telefone" type="ns2:telefone" minOccurs="1"  />
+					<xs:element name="ddiFax" type="ns2:ddi" minOccurs="0"  />
+					<xs:element name="dddFax" type="ns2:ddd" minOccurs="0"  />
+					<xs:element name="fax" type="ns2:telefone" minOccurs="0"  />
+					<xs:element name="email" type="ns2:email" minOccurs="1" />
+					<xs:element name="site" type="xs:anyURI" minOccurs="0" />
+					<xs:element name="longitude" type="xs:decimal" minOccurs="0" />
+					<xs:element name="latitude" type="xs:decimal" minOccurs="0" />
+					<xs:element name="hotel" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="carro" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="outro" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="iata" minOccurs="0" >
+						<xs:simpleType >
+							<xs:restriction base="xs:string">
+								<xs:minLength value="3"></xs:minLength>
+								<xs:maxLength value="3"></xs:maxLength>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="obsConsultor" type="ns2:descricaoElemento255" minOccurs="0"  />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="tarifarioFornecedorHotelRef">
+		<xs:sequence>
+			<xs:element name="identificadorBackofficeFornecedor" type="ns2:identificadorBackoffice" minOccurs="1"  />
+			<xs:element name="identificadorBackofficeCliente" type="ns2:identificadorBackoffice" minOccurs="0"/>
+			<xs:element name="categoriaApartamento" type="ns1:perfilHospedagem" minOccurs="1"/>
+			<xs:element name="tipoApartamento" type="ns1:tipoApartamento" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tarifarioFornecedorHotel">
+		<xs:complexContent>
+			<xs:extension base="tns:tarifarioFornecedorHotelRef">
+				<xs:sequence>
+					<xs:element name="vencimento" type="xs:date" minOccurs="1"/>
+					<xs:element name="descricao" type="ns2:descricaoElemento255" minOccurs="1"/>
+					<xs:element name="tarifa" type="xs:double" minOccurs="1"/>
+					<xs:element name="moeda" type="ns1:moeda" minOccurs="1"  />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="tarifarioFornecedorCarroRef">
+		<xs:sequence>
+			<xs:element name="identificadorBackofficeFornecedor" type="ns2:identificadorBackoffice" minOccurs="1"/>
+			<xs:element name="identificadorBackofficeCliente" type="ns2:identificadorBackoffice" minOccurs="0"/>
+			<xs:element name="modelo" type="ns2:codigoElemento50" minOccurs="0"/>
+			<xs:element name="categoria" type="ns2:codigoElemento" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tarifarioFornecedorCarro">
+		<xs:complexContent>
+			<xs:extension base="tns:tarifarioFornecedorCarroRef">
+				<xs:sequence>
+					<xs:element name="vencimento" type="xs:date" minOccurs="1"/>
+					<xs:element name="descricao" type="ns2:descricaoElemento255" minOccurs="0"/>
+					<xs:element name="tarifa" type="xs:double" minOccurs="1"/>
+					<xs:element name="seguro" type="xs:double" minOccurs="1"/>
+					<xs:element name="tarifaDiariaAdicional" type="xs:double" minOccurs="1"/>
+					<xs:element name="tarifaHoraAdicional" type="xs:double" minOccurs="1"/>
+					<xs:element name="moeda" type="ns1:moeda" minOccurs="1"  />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="tarifarioFornecedorOutroRef">
+		<xs:sequence>
+			<xs:element name="identificadorBackofficeFornecedor" type="ns2:identificadorBackoffice" minOccurs="1"/>
+			<xs:element name="identificadorBackofficeCliente" type="ns2:identificadorBackoffice" minOccurs="0"/>
+			<xs:element name="identificadorBackOffice" type="ns2:identificadorBackoffice" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tarifarioFornecedorOutro">
+		<xs:complexContent>
+			<xs:extension base="tns:tarifarioFornecedorOutroRef">
+				<xs:sequence>
+					<xs:element name="identificadorBackOfficeTipoProduto" type="ns2:identificadorBackoffice" minOccurs="1" />
+					<xs:element name="categoria" type="ns2:codigoElemento" minOccurs="1" />
+					<xs:element name="vencimento" type="xs:date" minOccurs="1"/>
+					<xs:element name="descricao" type="ns2:descricaoElemento255" minOccurs="0"/>
+					<xs:element name="tarifa" type="xs:double" minOccurs="1"/>
+					<xs:element name="moeda" type="ns1:moeda" minOccurs="1"  />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

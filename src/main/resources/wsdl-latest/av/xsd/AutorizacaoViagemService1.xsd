@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2-b13 (branches/2.2-6964; 2012-01-09T18:04:18+0000) JAXWS-RI/2.2.6-promoted-b20 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types">
+  <xs:complexType name="formaPagamento">
+    <xs:sequence>
+      <xs:element name="autorizacao" type="xs:string" minOccurs="0"/>
+      <xs:element name="numero" type="xs:string" minOccurs="0"/>
+      <xs:element name="parcelas" type="xs:int" minOccurs="0"/>
+      <xs:element name="valor" type="xs:double" minOccurs="0"/>
+      <xs:element name="formaPagameno" type="xs:string"/>
+      <xs:element name="vencimentoCartao" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remarks">
+    <xs:sequence>
+      <xs:element name="remark" type="tns:remark" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remark">
+    <xs:sequence>
+      <xs:element name="campo" type="xs:string" minOccurs="0"/>
+      <xs:element name="valor" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="resultadoAcao">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCESSO"/>
+      <xs:enumeration value="ERRO"/>
+      <xs:enumeration value="ALERTA"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoPassageiro">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TODOS"/>
+      <xs:enumeration value="PASSAGEIRO"/>
+      <xs:enumeration value="TERCEIRO"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoDocumento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATRICULA"/>
+      <xs:enumeration value="CPF"/>
+      <xs:enumeration value="RG"/>
+      <xs:enumeration value="PASSAPORTE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="sexo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FEMININO"/>
+      <xs:enumeration value="MASCULINO"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="classe">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ECONOMICA"/>
+      <xs:enumeration value="EXECUTIVA"/>
+      <xs:enumeration value="PRIMEIRA_CLASSE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoPax">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADT"/>
+      <xs:enumeration value="CHD"/>
+      <xs:enumeration value="INF"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoApartamento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INDIVIDUAL"/>
+      <xs:enumeration value="DUPLO"/>
+      <xs:enumeration value="TRIPO"/>
+      <xs:enumeration value="QUADRUPLO"/>
+      <xs:enumeration value="TWIN"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

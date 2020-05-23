@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-b01-.-->
+<xs:schema version="1.0" 
+           targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/traslado" 
+           xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans/traslado" 
+           xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types"
+             schemaLocation="beansTypes.xsd"/>
+
+  <xs:complexType name="traslados">
+	<xs:sequence>
+		<xs:element name="traslados" type="tns:traslado" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="traslado">
+    <xs:sequence>
+    	<xs:element name="id" type="xs:int" />
+    	<xs:element name="dataOrigem" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="paisOrigem" type="xs:string" minOccurs="0" />
+    	<xs:element name="estadoOrigem" type="xs:string" minOccurs="0" />
+    	<xs:element name="cidadeOrigem" type="xs:string" minOccurs="0" />
+    	<xs:element name="enderecoOrigem" type="xs:string" minOccurs="0" />
+    	<xs:element name="paisDestino" type="xs:string" minOccurs="0" />
+    	<xs:element name="estadoDestino" type="xs:string" minOccurs="0" />
+    	<xs:element name="cidadeDestino" type="xs:string" minOccurs="0" />
+    	<xs:element name="enderecoDestino" type="xs:string" minOccurs="0" />
+    	<xs:element name="valor" type="xs:double" minOccurs="0" />
+    	<xs:element name="taxa" type="xs:double" minOccurs="0" />
+    	<xs:element name="taxaFee" type="xs:double" minOccurs="0" />
+    	<xs:element name="moeda" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoTipoPagamento" type="xs:string" minOccurs="0" />
+    	<xs:element name="fornecedor" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoFornecedorBackOffice" type="xs:string" minOccurs="0" />
+    	<xs:element name="modeloVeiculo" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeMotorista" type="xs:string" minOccurs="0" />
+    	<xs:element name="contato" type="xs:string" minOccurs="0" />
+    	<xs:element name="observacaoOrcamento" type="xs:string" minOccurs="0" />
+    	<xs:element name="obsemissor" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoControleAgencia" type="xs:string" minOccurs="0" />
+    	<xs:element name="dataCadastro" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="dataVencimento" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="aprovado" type="xs:boolean"/>
+    	<xs:element name="canceladoEmitido" type="xs:boolean"/>
+    	<xs:element name="consolidadora" type="ns1:consolidadora" minOccurs="0" />
+    	<xs:element name="nomeConsultorReserva" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeConsultorEmissao" type="xs:string" minOccurs="0" />
+    	<xs:element name="justificativamaiortarifa" type="xs:string" minOccurs="0" />
+    	<xs:element name="sequenciaProdutoAgencia" type="xs:int" minOccurs="0" />
+    	<xs:element name="statusPagamentoFatura" type="xs:string" minOccurs="0" />
+    	<xs:element name="statusCancelamento" type="xs:int" minOccurs="0" />
+    	<xs:element name="taxaCancelamento" type="xs:double" minOccurs="0" />
+    	<xs:element name="dataModificacaoStatusCancelamento" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="nomeUsuarioModificouStatusCancelamento" type="xs:string" minOccurs="0" />
+    	<xs:element name="unidadeOperacional" type="xs:string" minOccurs="0" />
+    	<xs:element name="pontoVenda" type="ns1:pontoVendaOrcamento" minOccurs="0" />
+    	<xs:element name="codigoFornecedor" type="xs:string" minOccurs="0" />
+		<xs:element name="codigoEmissor" type="xs:string" minOccurs="0" />
+		<xs:element name="codigoJustificativaMaiorTarifa" type="xs:string" minOccurs="0"/>
+		<xs:element name="idPassageiroRef" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

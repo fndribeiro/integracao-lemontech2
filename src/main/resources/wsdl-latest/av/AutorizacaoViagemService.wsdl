@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 
+		LEMONTECH 
+		MODULO DE AUTORIZACAO DE VIAGEM
+-->
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://av.ws.wsselfbooking.lemontech.com.br/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://av.ws.wsselfbooking.lemontech.com.br/" name="AutorizacaoViagemService">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="xsd/AutorizacaoViagemService1.xsd" />
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel" schemaLocation="xsd/AutorizacaoViagemService2.xsd" />
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" schemaLocation="xsd/AutorizacaoViagemService3.xsd" />
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo" schemaLocation="xsd/AutorizacaoViagemService4.xsd" />
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans" schemaLocation="xsd/AutorizacaoViagemService5.xsd" />
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://av.ws.wsselfbooking.lemontech.com.br/" schemaLocation="xsd/AutorizacaoViagemService6.xsd" />
+		</xsd:schema>
+	</types>
+	<message name="disponibilizarOuIndisponibilizarAutorizacaoViagem">
+		<part name="parameters" element="tns:disponibilizarOuIndisponibilizarAutorizacaoViagem" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="disponibilizarOuIndisponibilizarAutorizacaoViagemResponse">
+		<part name="result" element="tns:disponibilizarOuIndisponibilizarAutorizacaoViagemResponse" />
+	</message>
+	<message name="sincronizarSolicitacao">
+		<part name="parameters" element="tns:sincronizarSolicitacao" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="sincronizarSolicitacaoResponse">
+		<part name="result" element="tns:sincronizarSolicitacaoResponse" />
+	</message>
+	<message name="RepositoryException">
+		<part name="fault" element="tns:RepositoryException" />
+	</message>
+	<message name="criarAutorizacaoViagem">
+		<part name="parameters" element="tns:criarAutorizacaoViagem" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="criarAutorizacaoViagemResponse">
+		<part name="result" element="tns:criarAutorizacaoViagemResponse" />
+	</message>
+	<message name="atualizarDataExpiracao">
+		<part name="parameters" element="tns:atualizarDataExpiracao" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="atualizarDataExpiracaoResponse">
+		<part name="result" element="tns:atualizarDataExpiracaoResponse" />
+	</message>
+	<message name="consultarAutorizacaoViagem">
+		<part name="parameters" element="tns:consultarAutorizacaoViagem" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="consultarAutorizacaoViagemResponse">
+		<part name="result" element="tns:consultarAutorizacaoViagemResponse" />
+	</message>
+	<message name="consultarSolicitacao">
+		<part name="parameters" element="tns:consultarSolicitacao" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="consultarSolicitacaoResponse">
+		<part name="result" element="tns:consultarSolicitacaoResponse" />
+	</message>
+	<message name="consultarAutorizacaoViagemSemVinculo">
+		<part name="parameters" element="tns:consultarAutorizacaoViagemSemVinculo" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="consultarAutorizacaoViagemSemVinculoResponse">
+		<part name="result" element="tns:consultarAutorizacaoViagemSemVinculoResponse" />
+	</message>
+	<message name="pesquisarSolicitacaoNaoSincronizada">
+		<part name="parameters" element="tns:pesquisarSolicitacaoNaoSincronizada" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="pesquisarSolicitacaoNaoSincronizadaResponse">
+		<part name="result" element="tns:pesquisarSolicitacaoNaoSincronizadaResponse" />
+	</message>
+	<message name="consultarSolicitacaoSemAutorizacaoDeViagem">
+		<part name="parameters" element="tns:consultarSolicitacaoSemAutorizacaoDeViagem" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="consultarSolicitacaoSemAutorizacaoDeViagemResponse">
+		<part name="result" element="tns:consultarSolicitacaoSemAutorizacaoDeViagemResponse" />
+	</message>
+	<message name="ativarOuInativarAutorizacaoViagem">
+		<part name="parameters" element="tns:ativarOuInativarAutorizacaoViagem" />
+		<part name="credential" element="tns:credential" />
+	</message>
+	<message name="ativarOuInativarAutorizacaoViagemResponse">
+		<part name="result" element="tns:ativarOuInativarAutorizacaoViagemResponse" />
+	</message>
+	<portType name="AutorizacaoViagemServiceWSImpl">
+		<operation name="disponibilizarOuIndisponibilizarAutorizacaoViagem" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/disponibilizarOuIndisponibilizarAutorizacaoViagemRequest" message="tns:disponibilizarOuIndisponibilizarAutorizacaoViagem" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/disponibilizarOuIndisponibilizarAutorizacaoViagemResponse" message="tns:disponibilizarOuIndisponibilizarAutorizacaoViagemResponse" />
+		</operation>
+		<operation name="sincronizarSolicitacao" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/sincronizarSolicitacaoRequest" message="tns:sincronizarSolicitacao" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/sincronizarSolicitacaoResponse" message="tns:sincronizarSolicitacaoResponse" />
+			<fault message="tns:RepositoryException" name="RepositoryException" wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/sincronizarSolicitacao/Fault/RepositoryException" />
+		</operation>
+		<operation name="criarAutorizacaoViagem" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/criarAutorizacaoViagemRequest" message="tns:criarAutorizacaoViagem" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/criarAutorizacaoViagemResponse" message="tns:criarAutorizacaoViagemResponse" />
+		</operation>
+		<operation name="atualizarDataExpiracao" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/atualizarDataExpiracaoRequest" message="tns:atualizarDataExpiracao" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/atualizarDataExpiracaoResponse" message="tns:atualizarDataExpiracaoResponse" />
+		</operation>
+		<operation name="consultarAutorizacaoViagem" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarAutorizacaoViagemRequest" message="tns:consultarAutorizacaoViagem" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarAutorizacaoViagemResponse" message="tns:consultarAutorizacaoViagemResponse" />
+		</operation>
+		<operation name="consultarSolicitacao" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarSolicitacaoRequest" message="tns:consultarSolicitacao" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarSolicitacaoResponse" message="tns:consultarSolicitacaoResponse" />
+		</operation>
+		<operation name="consultarAutorizacaoViagemSemVinculo" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarAutorizacaoViagemSemVinculoRequest" message="tns:consultarAutorizacaoViagemSemVinculo" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarAutorizacaoViagemSemVinculoResponse" message="tns:consultarAutorizacaoViagemSemVinculoResponse" />
+		</operation>
+		<operation name="pesquisarSolicitacaoNaoSincronizada" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/pesquisarSolicitacaoNaoSincronizadaRequest" message="tns:pesquisarSolicitacaoNaoSincronizada" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/pesquisarSolicitacaoNaoSincronizadaResponse" message="tns:pesquisarSolicitacaoNaoSincronizadaResponse" />
+		</operation>
+		<operation name="consultarSolicitacaoSemAutorizacaoDeViagem" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarSolicitacaoSemAutorizacaoDeViagemRequest" message="tns:consultarSolicitacaoSemAutorizacaoDeViagem" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/consultarSolicitacaoSemAutorizacaoDeViagemResponse" message="tns:consultarSolicitacaoSemAutorizacaoDeViagemResponse" />
+		</operation>
+		<operation name="ativarOuInativarAutorizacaoViagem" parameterOrder="parameters credential">
+			<input wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/ativarOuInativarAutorizacaoViagemRequest" message="tns:ativarOuInativarAutorizacaoViagem" />
+			<output wsam:Action="http://av.ws.wsselfbooking.lemontech.com.br/AutorizacaoViagemServiceWSImpl/ativarOuInativarAutorizacaoViagemResponse" message="tns:ativarOuInativarAutorizacaoViagemResponse" />
+		</operation>
+	</portType>
+	<binding name="AutorizacaoViagemServicePortBinding" type="tns:AutorizacaoViagemServiceWSImpl">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+		<operation name="disponibilizarOuIndisponibilizarAutorizacaoViagem">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:disponibilizarOuIndisponibilizarAutorizacaoViagem" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="sincronizarSolicitacao">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:sincronizarSolicitacao" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="RepositoryException">
+				<soap:fault name="RepositoryException" use="literal" />
+			</fault>
+		</operation>
+		<operation name="criarAutorizacaoViagem">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:criarAutorizacaoViagem" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="atualizarDataExpiracao">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:atualizarDataExpiracao" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="consultarAutorizacaoViagem">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:consultarAutorizacaoViagem" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="consultarSolicitacao">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:consultarSolicitacao" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="consultarAutorizacaoViagemSemVinculo">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:consultarAutorizacaoViagemSemVinculo" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="pesquisarSolicitacaoNaoSincronizada">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:pesquisarSolicitacaoNaoSincronizada" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="consultarSolicitacaoSemAutorizacaoDeViagem">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:consultarSolicitacaoSemAutorizacaoDeViagem" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="ativarOuInativarAutorizacaoViagem">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" parts="parameters" />
+				<soap:header message="tns:ativarOuInativarAutorizacaoViagem" part="credential" use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="AutorizacaoViagemService">
+		<port name="AutorizacaoViagemServicePort" binding="tns:AutorizacaoViagemServicePortBinding">
+			<soap:address location="http://lm0192:8081/wsselfbooking/AutorizacaoViagemService" />
+		</port>
+	</service>
+</definitions>

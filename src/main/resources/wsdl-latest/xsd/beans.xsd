@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is 
+	JAX-WS RI 2.2.1-b01-. -->
+<xs:schema version="1.0"
+	targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans"
+	xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans"
+	xmlns:ns11="http://lemontech.com.br/selfbooking/wsselfbooking/beans/rodoviario"
+	xmlns:ns10="http://lemontech.com.br/selfbooking/wsselfbooking/beans/expense"
+	xmlns:ns9="http://lemontech.com.br/selfbooking/wsselfbooking/beans/traslado"
+	xmlns:ns8="http://lemontech.com.br/selfbooking/wsselfbooking/beans/seguro"
+	xmlns:ns7="http://lemontech.com.br/selfbooking/wsselfbooking/beans/fornecedor"
+	xmlns:ns6="http://lemontech.com.br/selfbooking/wsselfbooking/beans/outro"
+	xmlns:ns5="http://lemontech.com.br/selfbooking/wsselfbooking/common/types"
+	xmlns:ns4="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro"
+	xmlns:ns3="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel"
+	xmlns:ns2="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo"
+	xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types"
+		schemaLocation="beansTypes.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/common/types"
+		schemaLocation="commonTypes.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo"
+		schemaLocation="beansAereo.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel"
+		schemaLocation="beansHotel.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro"
+		schemaLocation="beansCarro.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/outro"
+		schemaLocation="beansOutro.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/fornecedor"
+		schemaLocation="beansFornecedores.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/seguro"
+		schemaLocation="beansSeguro.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/traslado"
+		schemaLocation="beansTraslado.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/expense"
+		schemaLocation="beansExpense.xsd" />
+	<xs:import
+		namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/rodoviario"
+		schemaLocation="beansRodoviario.xsd" />
+	<xs:complexType name="regionalRef">
+		<xs:sequence>
+			<xs:element name="codigo" type="ns5:codigoElemento50" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="regional">
+		<xs:complexContent>
+			<xs:extension base="tns:regionalRef">
+				<xs:sequence>
+					<xs:element name="descricao" type="ns5:descricaoElemento100" />
+					<xs:element name="pcc" type="ns5:identificadorBackoffice" minOccurs="0" />
+					<xs:element name="identificadorBackofficeCliente" type="ns5:identificadorBackoffice" minOccurs="0" />
+					<xs:element name="identificadorBackofficeFranquia" type="ns5:identificadorBackoffice" minOccurs="0" />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="taxaFee" type="xs:double" minOccurs="0"/>
+					<xs:element name="corporateIdGol" type="ns5:corporateIdGol" minOccurs="0" />
+					<xs:element name="numeroDk" minOccurs="0">
+					   <xs:simpleType>
+					      <xs:restriction base="xs:string">
+					         <xs:maxLength value="15"></xs:maxLength>
+					      </xs:restriction>
+					   </xs:simpleType>
+					</xs:element>
+					<xs:element name="numeroDkTreinamento" minOccurs="0">
+						<xs:simpleType>
+						   <xs:restriction base="xs:string">
+						      <xs:maxLength value="15"></xs:maxLength>
+						   </xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="numeroDkEvento" minOccurs="0">
+					   <xs:simpleType>
+					      <xs:restriction base="xs:string">
+						     <xs:maxLength value="15"></xs:maxLength>
+						  </xs:restriction>
+					   </xs:simpleType>
+					</xs:element>
+					<xs:element name="emitirNotaFiscalEmNomeDoHospede" type="xs:boolean" minOccurs="0" default="false"/>
+					<xs:element name="emitirNotaFiscalEmNomeDaRegional" type="xs:boolean" minOccurs="0" default="false"/>			
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="centroDeCustoRef">
+		<xs:sequence>
+			<xs:element name="codigo" type="ns5:codigoElemento50">
+				<xs:annotation>
+					<xs:documentation>Codigo do centro de custo.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="regionalRef" type="tns:regionalRef">
+				<xs:annotation>
+					<xs:documentation>Regional que o centro de custo pertence.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="centroDeCusto">
+		<xs:complexContent>
+			<xs:extension base="tns:centroDeCustoRef">
+				<xs:sequence>
+					<xs:element name="descricao" type="ns5:descricaoElemento100" />
+					<xs:element name="configuracao" type="tns:configuracaoCentroDeCusto" />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="subCentroDeCustoRef">
+		<xs:sequence>
+			<xs:element name="codigo" type="ns5:codigoElemento50" />
+			<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="subCentroDeCusto">
+		<xs:complexContent>
+			<xs:extension base="tns:subCentroDeCustoRef">
+				<xs:sequence>
+					<xs:element name="descricao" type="ns5:descricaoElemento100" />
+					<xs:element name="configuracao" type="tns:configuracaoCentroDeCusto" />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="configuracaoCentroDeCusto">
+		<xs:sequence>
+			<xs:element name="autoAprovavel" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Centro de custo auto aprovavel.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="debitaBudget" type="xs:boolean" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Permite debitar budget
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contaContabilRef">
+		<xs:sequence>
+			<xs:element name="codigo" type="ns5:codigoElemento50" />
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="regionalRef" type="tns:regionalRef">
+						<xs:annotation>
+							<xs:documentation>Regional que o centro de custo pertence.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				
+				<xs:sequence>
+					<xs:element name="aereo" type="xs:boolean" />
+					<xs:element name="hotel" type="xs:boolean" />
+					<xs:element name="carro" type="xs:boolean" />
+					<xs:element name="seguro" type="xs:boolean" />
+					<xs:element name="outro" type="xs:boolean" />
+					<xs:element name="traslado" type="xs:boolean" />
+					<xs:element name="rodoviario" type="xs:boolean" />
+				</xs:sequence>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:complexType name="contaContabil">
+		<xs:complexContent>
+			<xs:extension base="tns:contaContabilRef">
+				<xs:sequence>
+					<xs:element name="descricao" type="ns5:descricaoElemento100" />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="funcionarios">
+		<xs:sequence>
+			<xs:element name="funcionario" type="tns:funcionario"
+				nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="funcionarioRef">
+		<xs:sequence>
+			<xs:element name="matricula" type="ns5:matricula" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="acompanhanteRef">
+		<xs:sequence>
+			<xs:element name="passageiro" type="tns:funcionarioRef" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>	
+
+	<xs:complexType name="funcionario">
+		<xs:complexContent>
+			<xs:extension base="tns:funcionarioRef">
+				<xs:sequence>
+					<xs:element name="nome" type="ns5:descricaoElemento100" />
+					<xs:element name="departamento" minOccurs="0" type="ns5:descricaoElemento100" />
+					<xs:element name="cargo" minOccurs="0" type="ns5:descricaoElemento100" />
+					<xs:element name="cpf" minOccurs="0" >
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="11"></xs:maxLength>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="passaporte" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="50"></xs:maxLength>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="dataNascimento" type="xs:date" minOccurs="0"/>
+					<xs:element name="sexo" type="ns1:sexo" />
+					<xs:choice minOccurs="0" maxOccurs="1">
+						<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+						<xs:element name="subCentroDeCustoRef" type="tns:subCentroDeCustoRef" />
+					</xs:choice>
+					<xs:element name="contato" type="tns:contato" minOccurs="0" />
+					<xs:element name="login" type="tns:login" minOccurs="0"/>
+					<xs:element name="bypassAprovacaoNacional" default="false" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="bypassAprovacaoInternacional" default="false" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="configuracao" type="tns:configuracaoFuncionario"/>
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+					<xs:element name="nomeaAgenciaPreferencial" type="ns5:descricaoElemento100" minOccurs="0"/>
+					<xs:element name="atividade" minOccurs="0" type="ns5:descricaoElemento100" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="parametrizacaoCentroDeCustoAprovacaoRef">
+		<xs:sequence>
+			<xs:element name="funcionarioRef" type="tns:funcionarioRef" minOccurs="0" maxOccurs="1"/>
+			
+			<xs:choice minOccurs="1">
+				<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+				<xs:element name="subCentroDeCustoRef" type="tns:subCentroDeCustoRef" />
+			</xs:choice>
+			
+			<xs:element name="nivelDeAprovacao" type="xs:int" minOccurs="0" default="0">
+				<xs:annotation>
+					<xs:documentation>Nivel de aprovacao, apos aprovacao desse nivel o sistema enviara a solicitacao para o proximo nivel caso tenha. Para tanto o cliente devera estar devidamente parametrizado.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoDeViagemDaAprocacao" type="ns1:tipoViagem" default="TODOS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Tipo de Viagem da Aprocacao. TODOS, INTERNACIONAL, INTERCONTINENTAL, CONTINENTAL E NACIONAL. Para tanto o cliente devera estar devidamente parametrizado.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoDePassageiro" type="ns1:tipoPassageiro" default="TODOS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Tipo de passageiro. TODOS, FUNCIONARIO e TERCEIRO.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="aprovaSomenteAprovador" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aprova somente Aprovador. Quando estiver como 'true', as pendencias desse aprovador serao somente as que o passageiro tiver perfil de aprovador.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="aprovaSomenteDentroDaPolitica" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aprova somente dentro da politica. Quando estiver como 'true', somente as solicitacoes dentro da politica poderao ser aprovadas pelo aprovador.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="periodoViagemInicial" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Período de viagem inicial.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="tipoDeSolicitacao" type="ns1:tipoDeSolicitacao" default="TODOS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Tipo de solicitacao. TODOS, CORPORATIVO, EXPENSE, INCENTIVO e TREINAMENTO.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="parametrizacaoCentroDeCustoAprovacao">
+		<xs:complexContent>
+			<xs:extension base="tns:parametrizacaoCentroDeCustoAprovacaoRef">
+				<xs:sequence>
+					
+					<xs:element name="vencimento" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Vencimento.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="periodoViagemFinal" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Período de viagem final.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="valorAlcadaInicial" type="xs:double" default="0" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Valor da alçada inicial.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="valorAlcadaFinal" type="xs:double" default="0" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Valor da alçada final.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="parametrizacaoCentroDeCustoSolicitacaoRef">
+		<xs:sequence>
+			<xs:element name="funcionarioRef" type="tns:funcionarioRef" />
+			<xs:choice>
+				<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+				<xs:element name="subCentroDeCustoRef" type="tns:subCentroDeCustoRef" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="parametrizacaoCentroDeCustoSolicitacao">
+		<xs:complexContent>
+			<xs:extension base="tns:parametrizacaoCentroDeCustoSolicitacaoRef">
+				<xs:sequence>
+					<xs:element name="vencimento" type="xs:date" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="parametrizacaoCentroDeCustoDebitoRef">
+		<xs:sequence>
+			<xs:element name="funcionarioRef" type="tns:funcionarioRef" />
+			<xs:choice>
+				<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+				<xs:element name="subCentroDeCustoRef" type="tns:subCentroDeCustoRef" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="parametrizacaoCentroDeCustoDebito">
+		<xs:complexContent>
+			<xs:extension base="tns:parametrizacaoCentroDeCustoDebitoRef">
+				<xs:sequence>
+					<xs:element name="vencimento" type="xs:date" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="login">
+		<xs:sequence>
+			<xs:element name="usuario">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="3"></xs:minLength>
+						<xs:maxLength value="100"></xs:maxLength>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contato">
+		<xs:sequence>
+			<xs:element name="email" type="ns5:email" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Email.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ddiTelefone" type="ns5:ddi" minOccurs="0"/>
+			<xs:element name="dddTelefone" type="ns5:ddd" minOccurs="0"/>
+			<xs:element name="telefone" type="ns5:telefone" minOccurs="1"/>
+			<xs:element name="ddiCelular" type="ns5:ddi" minOccurs="0"/>
+			<xs:element name="dddCelular" type="ns5:ddd" minOccurs="0"/>
+			<xs:element name="celular" type="ns5:telefone" minOccurs="0"/>
+			<xs:element name="forcaAtualizacao" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="configuracaoFuncionario">
+		<xs:sequence>
+			<xs:element name="autoAprova" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Caso o aprovador seja o passageiro e essa opcao estiver como SIM. A solicitacao sera automaticamente aprovada no nivel do aprovador.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="solicitaParaTodos" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Quando o funcionario tiver um perfil Solicitante ou Aprovador e este campo estiver como 'true', ele podera pre aprovar todas os solicitacoes. Independente das parametrizacoes. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preAprovaTodos" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Para perfil Aprovador e Solicitante, indeficara se poderao pre-aprovar todos os cc.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forcaDeVenda" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Quando estiver como 'true' sera pedido para validar o numero de autorizacao. Para tanto o cliente devera estar devidamente parametrizado. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nivelHierarquico" type="xs:int" minOccurs="0" default="0">
+				<xs:annotation>
+					<xs:documentation>Numero hierarquico do funcionario, na listagem de aprovadores aparecera somentes os aprovadores com numero inferior ao do passageiro. Para tanto o cliente devera estar devidamente parametrizado.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoCadastro" type="ns1:tipoCadastroFuncionario" default="SELF_BOOKING" minOccurs="0"/>
+			<xs:element name="categoriaHospedagem" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Categoria de hotel a ser associada ao cadastro do funcionario.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"></xs:maxLength>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="perfilFuncionario" type="ns1:perfilFuncionario" />
+			<xs:element name="perfilAereo" type="ns1:perfilAereo" minOccurs="0" />
+			<xs:element name="perfilHospedagem" type="ns1:perfilHospedagem" minOccurs="0" />
+			<xs:element name="visualizaSaldoBudgetAprovacao" type="xs:boolean" minOccurs="0" default="false"/>
+			<xs:element name="aprovaBudgetNegativo" type="xs:boolean" minOccurs="0" default="false"/>
+			<xs:element name="usuarioTerceiro" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="antecedenciaViagemNacional" type="xs:int" minOccurs="0"/>
+			<xs:element name="antecedenciaViagemInternacional" type="xs:int" minOccurs="0"/>
+			<xs:element name="politicaDespesa" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Politica de despesa a ser associada ao cadastro do funcionario.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="80"></xs:maxLength>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="bloqueiaSolicitarViagem" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bloqueio de solicitacao de viagem a ser associada ao cadastro do funcionario.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="podeSerAprovadoSemSaldoBudget" type="xs:boolean" minOccurs="0" default="false"/>
+			<xs:element name="bloqueiaSolicitarViagemAdiantamento" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bloqueio de solicitacao de viagem para o produto adiantamento.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="permiteSolicitarCarro" type="xs:boolean" minOccurs="0" default="true"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="solicitacao">
+		<xs:sequence>
+			<xs:element name="idSolicitacao" type="xs:int" />
+			<xs:element name="localVenda" type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="dataAprovacao" nillable="true" type="xs:dateTime"></xs:element>
+			<xs:element name="descricaoCentroCusto" type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="descricaoSubCentroCusto" type="xs:string"	minOccurs="0"></xs:element>
+			<xs:element name="dataCriacaoSv" type="xs:dateTime"></xs:element>
+			<xs:element name="codigoAutorizacaoViagem" type="xs:string"	minOccurs="0" />
+			<xs:element name="codigoClienteFranquia" type="xs:string" minOccurs="0" />
+			<xs:element name="solicitante" type="tns:passageiro" minOccurs="0"></xs:element>
+			<xs:element name="aprovador" type="tns:passageiro" minOccurs="0"></xs:element>
+			<xs:element name="atendimento" type="tns:atendimento" minOccurs="0" />
+			<xs:element name="dataConclusao" nillable="true" type="xs:dateTime" />
+			<xs:element name="regional" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="centroDeCusto" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="subCentroDeCusto" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabil" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="nacional" type="xs:boolean" />
+			<xs:element name="codigoCliente" type="xs:string" minOccurs="0" />
+			<xs:element name="passageiros" type="tns:passageiros" minOccurs="0" />
+			<xs:element name="aereos" type="ns2:aereos" minOccurs="0" />
+			<xs:element name="hoteis" type="ns3:hoteis" minOccurs="0" />
+			<xs:element name="carros" type="ns4:carros" minOccurs="0" />
+			<xs:element name="outros" type="ns6:outros" minOccurs="0" />
+			<xs:element name="motivoViagem" type="xs:string" minOccurs="0" />
+			<xs:element name="adiantamento" type="xs:double" minOccurs="0"/>
+			<xs:element name="moedaAdiantamento" type="xs:string" minOccurs="0"/>
+			<xs:element name="controleCliente" type="xs:string" minOccurs="0"/>
+			<xs:element name="totais" type="tns:totais" minOccurs="0" />
+			<xs:element name="statusSolicitacao" type="ns1:statusSolicitacao" minOccurs="0" />
+			<xs:element name="identificadoresIntegracao" type="ns1:identificadoresIntegracao" minOccurs="0" />
+			<xs:element name="autoConclusao" type="xs:boolean" minOccurs="0" />
+			<xs:element name="rateios" type="tns:rateios" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A soma de todas as porcentagem dos rateios será de 100%.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="codigoUnidadeNegocio" type="xs:string" minOccurs="0" />
+			<xs:element name="unidadeNegocio" type="xs:string" minOccurs="0" />
+			<xs:element name="idCliente" type="xs:int" />
+			<xs:element name="seguros" type="ns8:seguros" minOccurs="0" />
+			<xs:element name="agencia" type="tns:agencia" minOccurs="0" />
+			<xs:element name="filial" type="tns:filial" minOccurs="0" />
+			<xs:element name="instrucoesFaturamento" type="tns:instrucoesFaturamento" minOccurs="0" />
+			<xs:element name="frontOffice" type="xs:boolean" minOccurs="0" />
+			<xs:element name="complementoMotivoViagem" type="xs:string" minOccurs="0" />
+			<xs:element name="pontoVenda" type="tns:pontoVenda" minOccurs="0" />
+			<xs:element name="observacao" type="xs:string" minOccurs="0" />
+			<xs:element name="justificativaPrazoMinimo" type="xs:string" minOccurs="0" />
+			<xs:element name="complementoJustificativaPrazoMinimo" type="xs:string" minOccurs="0" />
+			<xs:element name="traslados" type="ns9:traslados" minOccurs="0" />
+			<xs:element name="tipoSolicitacao" type="ns1:tipoSolicitacao" minOccurs="0" />
+			<xs:element name="idSolicitacaoPrincipal" type="xs:int" minOccurs="0" />
+			<xs:element name="projeto" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabilAereo" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabilHotel" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabilCarro" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabilSeguro" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabilOutro" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="contaContabilTraslado" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="descricaoProjeto" type="xs:string" minOccurs="0" />
+			<xs:element name="aprovadorResponsavel" type="tns:passageiro" minOccurs="0" />
+			<xs:element name="expense" type="ns10:expense" minOccurs="0" />
+			<xs:element name="codigoContaContabil" type="xs:string" minOccurs="0" />
+			<xs:element name="codRegional" type="xs:string" minOccurs="0" />
+			<xs:element name="rodoviarios" type="ns11:rodoviarios" minOccurs="0" />
+			<xs:element name="contaContabilRodoviario" type="ns5:codigoElemento" minOccurs="0" />
+			<xs:element name="dataPreAprovacao" nillable="true" type="xs:dateTime"></xs:element>
+			<xs:element name="dataOrcamento" nillable="true" type="xs:dateTime"></xs:element>
+	        <xs:element name="numeroDk" minOccurs="0">
+		       <xs:simpleType>
+			      <xs:restriction base="xs:string">
+				     <xs:maxLength value="15"></xs:maxLength>
+			      </xs:restriction>
+		       </xs:simpleType>
+	        </xs:element>
+	        <xs:element name="numeroDkTreinamento" minOccurs="0">
+		       <xs:simpleType>
+			      <xs:restriction base="xs:string">
+				     <xs:maxLength value="15"></xs:maxLength>
+			      </xs:restriction>
+	 	       </xs:simpleType>
+ 	        </xs:element>
+ 	        <xs:element name="numeroDkEvento" minOccurs="0">
+		       <xs:simpleType>
+			      <xs:restriction base="xs:string">
+			         <xs:maxLength value="15"></xs:maxLength>
+			      </xs:restriction>
+		      </xs:simpleType>
+	       </xs:element>
+	       <xs:element name="nomeCliente" type="xs:string" minOccurs="0" />
+	       <xs:element name="dataAlteracao" nillable="true" type="xs:dateTime" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="passageiros">
+		<xs:sequence>
+			<xs:element name="passageiro" type="tns:passageiro"
+				nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="passageiro">
+		<xs:sequence>
+			<xs:element name="idPassageiro" type="xs:int" />
+			<xs:element name="nome" type="xs:string" minOccurs="0" />
+			<xs:element name="sobrenome" type="xs:string" minOccurs="0" />
+			<xs:element name="matricula" type="ns5:matricula" minOccurs="0" />
+			<xs:element name="departamento" type="xs:string" minOccurs="0" />
+			<xs:element name="tipoPassageiro" type="ns1:tipoPassageiro" minOccurs="0" />
+			<xs:element name="tipoDocumento" type="ns1:tipoDocumento" minOccurs="0" />
+			<xs:element name="valorDocumento" type="xs:string" minOccurs="0" />
+			<xs:element name="email" type="ns5:email" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Email.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataNascimento" type="xs:date" minOccurs="0" />
+			<xs:element name="sexo" type="ns1:sexo" minOccurs="0" />
+			<xs:element name="empresa" type="xs:string" minOccurs="0" />
+			<xs:element name="telefone" type="xs:string" minOccurs="0" />
+			<xs:element name="celular" type="xs:string" minOccurs="0" />
+			<xs:element name="dddTel" type="xs:string" minOccurs="0" />
+			<xs:element name="dddCel" type="xs:string" minOccurs="0" />
+			<xs:element name="terceiro" type="xs:boolean" minOccurs="0" />
+			<xs:element name="acompanhante" type="xs:boolean" minOccurs="0" />
+			<xs:element name="cpf" type="xs:string" minOccurs="0" />
+			<xs:element name="nomeCompleto" type="xs:string" minOccurs="0" />
+			<xs:element name="logAs" type="tns:logAs" minOccurs="0" />
+			<xs:element name="vip" type="xs:boolean" minOccurs="0" />
+			<xs:element name="cargo" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="logAs">
+		<xs:sequence>
+			<xs:element name="nome" type="xs:string" minOccurs="0" />
+			<xs:element name="matricula" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="atendimento">
+		<xs:sequence>
+			<xs:element name="posto" type="xs:string" minOccurs="0" />
+			<xs:element name="email" type="xs:string" minOccurs="0" />
+			<xs:element name="telefone" type="xs:string" minOccurs="0" />
+			<xs:element name="dddTel" type="xs:string" minOccurs="0" />
+			<xs:element name="nomeAgencia" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="totais">
+		<xs:sequence>
+			<xs:element name="totalSolicitacao" type="xs:double" minOccurs="0"/>
+			<xs:element name="totalAereos" type="xs:double" minOccurs="0"/>
+			<xs:element name="totalHoteis" type="xs:double" minOccurs="0" />
+			<xs:element name="totalCarros" type="xs:double" minOccurs="0" />
+			<xs:element name="totalOutros" type="xs:double" minOccurs="0" />
+			<xs:element name="totalFee" type="xs:double" minOccurs="0"/>
+			<xs:element name="totalSeguros" type="xs:double" minOccurs="0" />
+			<xs:element name="totalTraslados" type="xs:double" minOccurs="0" />
+			<xs:element name="totalRodoviarios" type="xs:double" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="identificadorIntegracaoRef">
+		<xs:sequence>
+			<xs:element name="identificadorIntegracao" >
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"></xs:maxLength>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="tipoIntegracao" type="ns1:tipoIntegracao"/>
+			<xs:element name="tipoConector" type="xs:string" />
+			<xs:element name="nomeConector" type="xs:string" />
+			<xs:element name="idSolicitacaoRef" type="xs:int" />
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element name="idAereoRef" type="xs:int" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="idHotelRef" type="xs:int" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="idCarroRef" type="xs:int" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="idOutroRef" type="xs:int" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="idSeguroRef" type="xs:int" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="idTrasladoRef" type="xs:int" />
+				</xs:sequence>
+				
+				<xs:sequence>
+					<xs:element name="idRodoviarioRef" type="xs:int" />
+				</xs:sequence>
+			</xs:choice>
+		</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="rateios">
+		<xs:sequence>
+			<xs:element name="rateio" type="tns:rateio" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+    
+    <xs:complexType name="rateio">
+		<xs:sequence>
+			<xs:element name="nomeCentroCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="nomeRegional" type="xs:string" minOccurs="0" />
+			<xs:element name="valorPorcentagem" type="xs:double" minOccurs="0" />
+			<xs:element name="nomeSubCentroCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="descricaoCentroCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="descricaoSubCentroCusto" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="parametrizacaoViajanteAprovacaoRef">
+		<xs:sequence>
+			<xs:element name="funcionarioRef" type="tns:funcionarioRef">
+				<xs:annotation>
+					<xs:documentation>Referencia ao Funcionario para onde esta parametrizacao sera aplicada</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="viajanteRef" type="tns:funcionarioRef">
+				<xs:annotation>
+					<xs:documentation>Referencia ao Funcionario que esta parametrizacao ira aprovar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nivelDeAprovacao" type="xs:int" minOccurs="0" default="0">
+				<xs:annotation>
+					<xs:documentation>Nivel de aprovacao, apos aprovacao desse nivel o sistema enviara a solicitacao para o proximo nivel caso tenha. Para tanto o cliente devera estar devidamente parametrizado.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoDeViagemDaAprocacao" type="ns1:tipoViagem" default="TODOS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Tipo de Viagem da Aprocacao. TODOS, INTERNACIONAL, INTERCONTINENTAL, CONTINENTAL E NACIONAL. Para tanto o cliente devera estar devidamente parametrizado.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="aprovaSomenteDentroDaPolitica" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aprova somente dentro da politica. Quando estiver como 'true', somente as solicitacoes dentro da politica poderao ser aprovadas pelo aprovador.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="periodoViagemInicial" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Período de viagem inicial.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="tipoDeSolicitacao" type="ns1:tipoDeSolicitacao" default="TODOS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Tipo de solicitacao. TODOS, CORPORATIVO, EXPENSE, INCENTIVO e TREINAMENTO.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+					
+		</xs:sequence>
+	</xs:complexType>
+	
+    <xs:complexType name="parametrizacaoViajanteAprovacao">
+		<xs:complexContent>
+			<xs:extension base="tns:parametrizacaoViajanteAprovacaoRef">
+				<xs:sequence>
+					<xs:element name="periodoViagemFinal" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Período de viagem final.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="valorAlcadaInicial" type="xs:double" default="0" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Valor da alçada inicial.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="valorAlcadaFinal" type="xs:double" default="0" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Valor da alçada final.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="vencimento" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Vencimento.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="substituirParametrizacaoExistente" type="xs:boolean" default="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Informa se ira substituir uma parametrizacao ja existente do mesmo nivel com outro aprovador</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="single" type="xs:boolean" default="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Informa se o sistema deverá inativar todas as parametrizações do viajante mantendo ativa somente a que estiver sendo cadastrada.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="agencia">
+		<xs:sequence>
+			<xs:element name="nome" type="xs:string" minOccurs="0" />
+			<xs:element name="razaoSocial" type="xs:string" minOccurs="0" />
+			<xs:element name="endereco" type="xs:string" minOccurs="0" />
+			<xs:element name="cidade" type="xs:string" minOccurs="0" />
+			<xs:element name="estado" type="xs:string" minOccurs="0" />
+			<xs:element name="pais" type="xs:string" minOccurs="0" />
+			<xs:element name="cep" type="xs:string" minOccurs="0" />
+			<xs:element name="telefone" type="xs:string" minOccurs="0" />
+			<xs:element name="fax" type="xs:string" minOccurs="0" />
+			<xs:element name="email" type="xs:string" minOccurs="0" />
+			<xs:element name="cnpj" type="xs:string" minOccurs="0" />
+			<xs:element name="iata" type="xs:string" minOccurs="0" />
+			<xs:element name="id" type="xs:integer" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="filial">
+		<xs:sequence>
+			<xs:element name="nome" type="xs:string" minOccurs="0" />
+			<xs:element name="razaoSocial" type="xs:string" minOccurs="0" />
+			<xs:element name="endereco" type="xs:string" minOccurs="0" />
+			<xs:element name="cidade" type="xs:string" minOccurs="0" />
+			<xs:element name="estado" type="xs:string" minOccurs="0" />
+			<xs:element name="pais" type="xs:string" minOccurs="0" />
+			<xs:element name="cep" type="xs:string" minOccurs="0" />
+			<xs:element name="cnpj" type="xs:string" minOccurs="0" />
+			<xs:element name="numeroDk" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="instrucoesFaturamento">
+		<xs:sequence>
+			<xs:element name="caixaPostalPagtoFaturado" type="xs:string" minOccurs="0" />
+			<xs:element name="cidadePagtoFaturado" type="xs:string" minOccurs="0" />
+			<xs:element name="estadoPagtoFaturado" type="xs:string" minOccurs="0" />
+			<xs:element name="paisPagtoFaturado" type="xs:string" minOccurs="0" />
+			<xs:element name="cepPagtoFaturado" type="xs:string" minOccurs="0" />
+			<xs:element name="emailPagtoFaturado" type="xs:string" minOccurs="0" />
+			<xs:element name="caixaPostalPagtoCartao" type="xs:string" minOccurs="0" />
+			<xs:element name="cidadePagtoCartao" type="xs:string" minOccurs="0" />
+			<xs:element name="estadoPagtoCartao" type="xs:string" minOccurs="0" />
+			<xs:element name="paisPagtoCartao" type="xs:string" minOccurs="0" />
+			<xs:element name="cepPagtoCartao" type="xs:string" minOccurs="0" />
+			<xs:element name="emailPagtoCartao" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>	
+	
+	<xs:complexType name="produtos">
+		<xs:choice>
+			<xs:element name="aereo" type="ns2:aereo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="hotel" type="ns3:hotel" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="carro" type="ns4:carro" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="outro" type="ns6:outro" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="seguro" type="ns8:seguro" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="traslado" type="ns9:traslado" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="rodoviario" type="ns11:rodoviario" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	
+
+    <xs:complexType name="pontoVenda">
+    	<xs:sequence>
+	    	<xs:element name="nomePontoVenda" type="xs:string" minOccurs="0" />
+	    	<xs:element name="codBackOffice" type="xs:int" />
+	    	<xs:element name="pccLocalVenda" type="xs:string" minOccurs="0" />
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="deslocamento">
+		<xs:sequence>
+			<xs:element name="latitudeOrigem" type="xs:string" minOccurs="0" />
+			<xs:element name="longitudeOrigem" type="xs:string" minOccurs="0" />
+			<xs:element name="latitudeDestino" type="xs:string" minOccurs="0" />
+			<xs:element name="longitudeDestino" type="xs:string" minOccurs="0" />
+			<xs:element name="distanciaPercorrida" type="xs:double" />
+		</xs:sequence>
+    </xs:complexType>
+
+	<xs:complexType name="projetoRef">
+		<xs:sequence>
+			<xs:element name="codigo" type="ns5:codigoElemento50" />
+			<xs:choice>
+				<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+				<xs:element name="subCentroDeCustoRef" type="tns:subCentroDeCustoRef" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="projeto">
+		<xs:complexContent>
+			<xs:extension base="tns:projetoRef">
+				<xs:sequence>
+					<xs:element name="descricao" type="ns5:descricaoElemento100" />
+					<xs:element name="ativo" type="xs:boolean" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="budget">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="regionalRef" type="tns:regionalRef" />
+				<xs:element name="centroDeCustoRef" type="tns:centroDeCustoRef" />
+				<xs:element name="subCentroDeCustoRef" type="tns:subCentroDeCustoRef" />
+				<xs:element name="projetoRef" type="tns:projetoRef" />
+			</xs:choice>
+			<xs:element name="modalidadeLancamentoBudget" type="ns1:modalidadeLancamentoBudget"/>
+			<xs:element name="tipoOperacaoBudget" type="ns1:tipoOperacaoBudget" />
+			<xs:element name="valor" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="consultaBilheteCia">
+		<xs:sequence>
+			<xs:element name="localizador" type="xs:string"/>
+			<xs:element name="bilhete" type="xs:string"/>
+			<xs:element name="source" type="ns1:source" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarHoteisHomologados">
+		<xs:sequence>
+			<xs:element name="identificadorBackOffice" type="xs:string"/>
+			<xs:element name="hotelHomologado" type="xs:boolean"/>
+			<xs:element name="vencimentoHomologacao" type="xs:date" />
+		</xs:sequence>
+	</xs:complexType>
+	
+  <xs:complexType name="aereoFinalizar">
+    <xs:sequence>
+      <xs:element name="localizador" type="xs:string" minOccurs="1" />
+      <xs:element name="codigoCia" type="xs:string" minOccurs="1" />
+      <xs:element name="bilhete" type="xs:string" minOccurs="1"/>
+      <xs:element name="dataEmissao" type="xs:dateTime" minOccurs="1" />
+      <xs:element name="formaPagamento" type="ns1:formaPagamento" minOccurs="1" maxOccurs="1" nillable="false"/>
+    </xs:sequence>
+  </xs:complexType>	  
+  
+  <xs:complexType name="hotelFinalizar">
+    <xs:sequence>
+      <xs:element name="localizador" type="xs:string" minOccurs="1" />
+      <xs:element name="controleAgencia" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoFornecedor" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoConfirmacao" type="xs:string" minOccurs="1"/>
+      <xs:element name="dataConfirmacao" type="xs:dateTime" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="carroFinalizar">
+    <xs:sequence>
+      <xs:element name="localizador" type="xs:string" minOccurs="1" />
+      <xs:element name="codigoFornecedor" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoReserva" type="xs:string" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cadastrarTreinamento">
+    <xs:sequence>
+      <xs:element name="ativo" type="xs:boolean"/>
+      <xs:element name="codigoTreinamento" type="xs:string" minOccurs="1"/>
+      <xs:element name="descricao" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoTurma" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoRegional" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoCentroDeCusto" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoSubCentroDeCusto" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoRegionalContaContabil" type="xs:string" minOccurs="1"/>
+      <xs:element name="codigoContaContabil" type="xs:string" minOccurs="1"/>
+      <xs:element name="dataInicio" type="xs:dateTime" />
+      <xs:element name="dataFim" type="xs:dateTime" />
+      <xs:element name="pais" type="xs:string" minOccurs="0"/>
+      <xs:element name="uf" type="xs:string" minOccurs="0"/>
+      <xs:element name="cidade" type="xs:string" minOccurs="0"/>
+      <xs:element name="iata" type="xs:string" minOccurs="0"/>
+      <xs:element name="endereco" type="xs:string" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cadastrarParticipanteTreinamento">
+    <xs:sequence>
+	  <xs:element name="matricula" type="xs:string" minOccurs="1"/>
+	  <xs:element name="codigoTreinamento" type="xs:string" minOccurs="1"/>
+      <xs:element name="desviaPoliticaAereo" type="xs:boolean"/>
+      <xs:element name="desviaPoliticaHotel" type="xs:boolean"/>
+      <xs:element name="desviaPoliticaCarro" type="xs:boolean"/>
+      <xs:element name="pais" type="xs:string" minOccurs="1"/>
+      <xs:element name="uf" type="xs:string" minOccurs="1"/>
+      <xs:element name="cidade" type="xs:string" minOccurs="0"/>
+      <xs:element name="iata" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  	  
+  <xs:complexType name="deletarTreinamento">
+    <xs:sequence>
+      <xs:element name="codigoTreinamento" type="xs:string" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+   <xs:complexType name="deletarParticipanteTreinamento">
+    <xs:sequence>
+	  <xs:element name="matricula" type="xs:string" minOccurs="1"/>
+	  <xs:element name="codigoTreinamento" type="xs:string" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="camposAdicionais">
+	<xs:sequence>
+		<xs:element name="campoAdicional" type="tns:campoAdicional" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>  
+  <xs:complexType name="campoAdicional">
+	<xs:sequence>
+		<xs:element name="label" type="xs:string" minOccurs="1" />
+		<xs:element name="valor" type="xs:string" minOccurs="1" />
+	</xs:sequence>
+  </xs:complexType>
+  
+ <xs:complexType name="delegarTodasParametrizacoes">
+ 	<xs:sequence>
+		<xs:element name="tipoParametrizacao" type="ns1:tipoParametrizacao" minOccurs="0"/>
+	</xs:sequence>
+ </xs:complexType>
+ 
+ <xs:complexType name="parametrizacoesEspecificas">
+ 	<xs:sequence>
+		<xs:element name="parametrizacoesSolicitacao" type="tns:parametrizacoesSolicitacao" minOccurs="0" />
+		<xs:element name="parametrizacoesAprovacao" type="tns:parametrizacoesAprovacao" minOccurs="0" />
+	</xs:sequence>
+ </xs:complexType>
+  
+ <xs:complexType name="parametrizacoesSolicitacao">
+	<xs:sequence>
+		<xs:element name="parametrizacaoCentroDeCustoSolicitacaoRef" type="tns:parametrizacaoCentroDeCustoSolicitacaoRef" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+ </xs:complexType> 
+  
+ <xs:complexType name="parametrizacoesAprovacao">
+	<xs:sequence>
+		<xs:element name="parametrizacaoCentroDeCustoAprovacaoRef" type="tns:parametrizacaoCentroDeCustoAprovacaoRef" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+ </xs:complexType>
+  
+  <xs:complexType name="instituicaoBancariaRef">
+	<xs:sequence>
+		<xs:element name="codigo" type="xs:int" minOccurs="1" />
+	</xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

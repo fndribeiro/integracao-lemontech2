@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-b01-. -->
+<xs:schema version="1.0" 
+	targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/services/response" 
+	xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types"
+	xmlns:ns2="http://lemontech.com.br/selfbooking/wsselfbooking/beans" 
+	xmlns:ns3="http://lemontech.com.br/selfbooking/wsselfbooking/beans/fornecedor" 
+	xmlns:ns4="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="beansTypes.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans" schemaLocation="beans.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/fornecedor" schemaLocation="beansFornecedores.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo" schemaLocation="beansAereo.xsd" />
+	
+	<xs:complexType name="pesquisarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoAcao" type="ns1:resultadoAcao" minOccurs="0" />
+			<xs:element name="numeroSolicitacoes" type="xs:int" minOccurs="0" />
+			<xs:element name="solicitacao" type="ns2:solicitacao" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="sincronizarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoAcao" type="ns1:resultadoAcao" minOccurs="0" />
+			<xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarSubCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="alterarStatusSubCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarContaContabilResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="alterarStatusContaContabilResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarParametrizacaoCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="deletarParametrizacaoCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarRegionalResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="alterarStatusRegionalResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="alterarStatusCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+		
+	<xs:complexType name="cadastrarFuncionarioResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="pesquisarFuncionarioResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+			<xs:element name="funcionarios" type="ns2:funcionarios" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="alterarStatusFuncionarioResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cadastrarFornecedorResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="alterarStatusFornecedorResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cadastrarTarifarioResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="alterarStatusTarifarioResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="aprovarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reprovarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="inserirIdentificadorIntegracaoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarParametrizacaoViajanteResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="deletarParametrizacaoViajanteResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="pesquisarVendasConsolidadoraResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+			<xs:element name="numeroProdutos" type="xs:int" />
+			<xs:element name="passageiros" type="ns2:passageiros" minOccurs="0" />
+			<xs:element name="produtos" type="ns2:produtos" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarFornecedorSourceResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="inserirItemDespesaResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarProjetoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="alterarStatusProjetoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="atualizarBudgetResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="consultaBilheteCiaResponse">
+		<xs:sequence>
+			<xs:element name="resultadoAcao" type="ns1:resultadoAcao" minOccurs="0" />
+			<xs:element name="aereo" type="ns4:aereo" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarHoteisHomologadosResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="atrelarUsuariosResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="finalizarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarTreinamentoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarParticipanteTreinamentoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="deletarTreinamentoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="deletarParticipanteTreinamentoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="criarPreSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="urlPreSolicitacao" type="xs:string" minOccurs="0" />
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="contaBancariaResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarControleClienteResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="importarDelegacaoParametrizacaoCentroDeCustoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cadastrarUnidadeNegocioResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="importarFaturaCartaoCreditoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="pesquisarAdiantamentoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoAcao" type="ns1:resultadoAcao" minOccurs="0" />
+			<xs:element name="numeroSolicitacoes" type="xs:int" minOccurs="0" />
+			<xs:element name="solicitacao" type="ns2:solicitacao" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="pesquisarRelatorioDespesasResponse">
+		<xs:sequence>
+			<xs:element name="resultadoAcao" type="ns1:resultadoAcao" minOccurs="0" />
+			<xs:element name="numeroSolicitacoes" type="xs:int" minOccurs="0" />
+			<xs:element name="solicitacao" type="ns2:solicitacao" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="importarDespesaResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="liberarAdiantamentoResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="contabilizarRelatorioDespesasResponse">
+		<xs:sequence>
+			<xs:element name="resultadoOperacao" type="ns1:resultadoOperacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+</xs:schema>

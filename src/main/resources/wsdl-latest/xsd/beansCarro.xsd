@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-b01-.-->
+<xs:schema version="1.0" 
+		targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" 
+		xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" 
+		xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="beansTypes.xsd"/>
+  
+  <xs:complexType name="carros">
+	<xs:sequence>
+		<xs:element name="carro" type="tns:carro" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="carro">
+    <xs:sequence>
+    	<xs:element name="id" type="xs:int" />
+    	<xs:element name="modelo" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeLocadora" type="xs:string" minOccurs="0" />
+    	<xs:element name="localRetirada" type="xs:string" minOccurs="0" />
+    	<xs:element name="dataRetirada" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="localDevolucao" type="xs:string" minOccurs="0" />
+    	<xs:element name="dataDevolucao" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="localizador" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoEmissor" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoReservador" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeReservador" type="xs:string" minOccurs="0" />
+    	<xs:element name="source" type="xs:string" minOccurs="0" />
+    	<xs:element name="dataReserva" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="diaria" type="xs:double" minOccurs="0" />
+    	<xs:element name="taxa" type="xs:double" minOccurs="0" />
+    	<xs:element name="taxaservico" type="xs:double" minOccurs="0" />
+    	<xs:element name="formaPagamento" type="ns1:formaPagamento"	minOccurs="0" />
+    	<xs:element name="idPassageiroRef" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+    	<xs:element name="justificativaMaiorTarifa" type="xs:string" minOccurs="0"></xs:element>
+    	<xs:element name="cidade" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoFornecedor" type="xs:string" minOccurs="0" />
+    	<xs:element name="nacional" type="xs:boolean" minOccurs="0" />
+    	<xs:element name="observacao" type="xs:string" minOccurs="0" />
+    	<xs:element name="voucher" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoReserva" type="xs:string" minOccurs="0" />
+    	<xs:element name="codigoJustificativaMaiorTarifa" type="xs:string" minOccurs="0"/>
+    	<xs:element name="identificadorIntegracao" type="xs:string" minOccurs="0" />
+    	<xs:element name="identificadorBackOfficeTipoProduto" type="xs:string" minOccurs="0"/>
+    	<xs:element name="autorizacaoCartao" type="xs:string" minOccurs="0" />
+    	<xs:element name="remarks" type="ns1:remarks" minOccurs="0" />
+    	<xs:element name="statusCancelamento" type="xs:int" minOccurs="0"/>
+    	<xs:element name="taxaCancelamento" type="xs:double" minOccurs="0" />
+    	<xs:element name="dataModificacaoStatusCancelamento" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="usuarioModificouStatusCancelamento" type="xs:int" minOccurs="0"/>
+    	<xs:element name="nomeEmissor" type="xs:string" minOccurs="0" />
+    	<xs:element name="valorHoraExtra" type="xs:double" minOccurs="0" />
+    	<xs:element name="valorDiariaExtra" type="xs:double" minOccurs="0" />
+    	<xs:element name="totalCarro" type="xs:double" minOccurs="0" />
+    	<xs:element name="cancelado" type="xs:boolean"/>
+    	<xs:element name="identificadoresIntegracao" type="ns1:identificadoresIntegracao" minOccurs="0" />
+    	<xs:element name="taxaFee" type="xs:double" minOccurs="0"/>
+    	<xs:element name="selfbook" type="xs:boolean" />
+		<xs:element name="consolidadora" type="ns1:consolidadora" minOccurs="0" />
+		<xs:element name="moeda" type="xs:string" minOccurs="0" />
+		<xs:element name="codigoLojaReserva" type="xs:string" minOccurs="0" />
+		<xs:element name="quantidadeDiaria" type="xs:int" minOccurs="0" />
+		<xs:element name="pais" type="xs:string" minOccurs="0" />
+		<xs:element name="estado" type="xs:string" minOccurs="0" />
+		<xs:element name="dataVencReserva" type="xs:dateTime" minOccurs="0" />
+		<xs:element name="pontoVenda" type="ns1:pontoVendaOrcamento" minOccurs="0" />
+		<xs:element name="emailEmissor" type="xs:string" minOccurs="0" />
+		<xs:element name="codigoLocadora" type="xs:string" minOccurs="0" />
+		<xs:element name="iataCidade" type="xs:string" minOccurs="0" />
+		<xs:element name="localizadorPreTrip" type="xs:string" minOccurs="0" />
+		<xs:element name="cidadeDevolucao" type="xs:string" minOccurs="0" />
+		<xs:element name="estadoDevolucao" type="xs:string" minOccurs="0" />
+		<xs:element name="iataCidadeDevolucao" type="xs:string" minOccurs="0" />
+		<xs:element name="nomePais" type="xs:string" minOccurs="0" />
+		<xs:element name="nomePaisDevolucao" type="xs:string" minOccurs="0" />
+		<xs:element name="condutorAdicional" type="xs:string" minOccurs="0" />
+		<xs:element name="valorMenorTarifaSaving" type="xs:double" minOccurs="0" />
+		<xs:element name="online" type="xs:boolean"/>
+		<xs:element name="agenteCotacao" type="ns1:agente" minOccurs="0" maxOccurs="1" />
+    	<xs:element name="agenteEmissao" type="ns1:agente" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="pedidosCarros">
+	<xs:sequence>
+		<xs:element name="pedidoCarro" type="tns:pedidoCarro" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pedidoCarro">
+	<xs:sequence>
+		<xs:element name="cidadeRetirada" type="xs:string" minOccurs="1" />
+		<xs:element name="estadoRetirada" type="xs:string" minOccurs="1" />
+		<xs:element name="cidadeDevolucao" type="xs:string" minOccurs="1" />
+		<xs:element name="estadoDevolucao" type="xs:string" minOccurs="1" />
+		<xs:element name="dataRetirada" type="xs:dateTime" minOccurs="1" />
+		<xs:element name="dataDevolucao" type="xs:dateTime" minOccurs="1" />
+		<xs:element name="pais" type="xs:string" minOccurs="1" />
+		<xs:element name="nomeLocadora" type="xs:string" minOccurs="1" />
+		<xs:element name="modeloPreferencia" type="xs:string" minOccurs="1" />
+	</xs:sequence>
+  </xs:complexType>
+    
+</xs:schema>

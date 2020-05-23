@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-b01-.-->
+<xs:schema version="1.0" targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/expense" 
+								xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans/expense" 
+								xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" 
+								xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="beansTypes.xsd"/>
+  
+  <xs:complexType name="expense">
+    <xs:sequence>
+		<xs:element name="adiantamento" type="tns:adiantamento" minOccurs="0" />	
+		<xs:element name="prestacaoContas" type="tns:prestacaoContas" minOccurs="0" />	
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="adiantamento">
+    <xs:sequence>
+    	<xs:element name="id" type="xs:int" />
+    	<xs:element name="matriculaAutorizador" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeAutorizador" type="xs:string" minOccurs="0" />
+    	<xs:element name="dataInicial" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="dataFinal" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="tipoCredito" type="ns1:tipoCredito" minOccurs="0"  />
+    	<xs:element name="numeroAutorizacao" type="xs:string" minOccurs="0" />
+    	<xs:element name="observacaoSolicitante" type="xs:string" minOccurs="0"/>
+    	<xs:element name="observacaoFinanceiro" type="xs:string" minOccurs="0"/>
+    	<xs:element name="status" type="ns1:adiantamentoStatus" minOccurs="0"  />
+    	<xs:element name="dataLiberacao" type="xs:dateTime" minOccurs="0" />
+    	<xs:element name="matriculaCancelador" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeCancelador" type="xs:string" minOccurs="0" />
+    	<xs:element name="dataCancelamento" type="xs:dateTime" minOccurs="0" />
+		<xs:element name="itens" type="tns:adiantamentoItens" minOccurs="0"/>
+		<xs:element name="dataPagamento" type="xs:dateTime" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="adiantamentoItens">
+	<xs:sequence>
+		<xs:element name="item" type="tns:adiantamentoItem" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="adiantamentoItem">
+  	<xs:sequence>
+  		<xs:element name="tipoDespesa" type="xs:string" minOccurs="0"/>
+  		<xs:element name="valor" type="xs:double" minOccurs="0" />
+  		<xs:element name="moeda" type="ns1:moeda" minOccurs="0"  />
+  		<xs:element name="codigoDespesa" type="xs:string" minOccurs="0"/>
+  		<xs:element name="classificacao" type="xs:string" minOccurs="0"/>
+  		<xs:element name="id" type="xs:int" />
+  		<xs:element name="moedaCambio" type="ns1:moeda" minOccurs="0"  />
+  		<xs:element name="valorMoedaCambio" type="xs:double" minOccurs="0" />
+  		<xs:element name="totalConvertido" type="xs:double" minOccurs="0" />
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="prestacaoContas">
+    <xs:sequence>
+    	<xs:element name="id" type="xs:int" />
+    	<xs:element name="matriculaAutorizador" type="xs:string" minOccurs="0" />
+    	<xs:element name="nomeAutorizador" type="xs:string" minOccurs="0" />
+    	<xs:element name="status" type="ns1:presacaoContasStatus" minOccurs="0"  />
+    	<xs:element name="observacaoFinanceiro" type="xs:string" minOccurs="0"/>
+    	<xs:element name="justificativaReprovacao" type="xs:string" minOccurs="0"/>
+    	<xs:element name="reembolso" type="xs:boolean" minOccurs="1"/>
+		<xs:element name="itens" type="tns:prestacaoContaItens" minOccurs="0"/>
+		<xs:element name="fluxos" type="tns:fluxos" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="prestacaoContaItens">
+	<xs:sequence>
+		<xs:element name="item" type="tns:prestacaoContaItem" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="prestacaoContaItem">
+  	<xs:sequence>
+  		<xs:element name="tipoDespesa" type="xs:string" minOccurs="0"/>
+  		<xs:element name="valor" type="xs:double" minOccurs="0" />
+  		<xs:element name="moeda" type="ns1:moeda" minOccurs="0"  />
+  		<xs:element name="urlImagem" type="xs:string" minOccurs="0"/>
+  		<xs:element name="observacao" type="xs:string" minOccurs="0"/>
+  		<xs:element name="identificadorExterno" type="xs:string" minOccurs="0"/>
+  		<xs:element name="deslocamento" type="ns1:deslocamentoTerrestre" minOccurs="0"/>
+  		<xs:element name="codigoDespesa" type="xs:string" minOccurs="0"/>
+  		<xs:element name="reembolsavel" type="xs:boolean" minOccurs="0" />
+  		<xs:element name="custoCliente" type="xs:boolean" minOccurs="0" />
+  		<xs:element name="nomeClienteCusto" type="xs:string" minOccurs="0"/>
+  		<xs:element name="formaPagamentoPrestacaoContaItem" type="tns:formaPagamentoPrestacaoContaItem" minOccurs="0"/>
+  		<xs:element name="classificacao" type="xs:string" minOccurs="0"/>
+  		<xs:element name="id" type="xs:int" />
+  		<xs:element name="moedaCambio" type="ns1:moeda" minOccurs="0"  />
+  		<xs:element name="valorMoedaCambio" type="xs:double" minOccurs="0" />
+  		<xs:element name="totalConvertido" type="xs:double" minOccurs="0" />
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="formaPagamentoPrestacaoContaItem">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="DINHEIRO" />
+		<xs:enumeration value="CARTAO_CREDITO" />
+		<xs:enumeration value="CARTAO_DEBITO" />
+		<xs:enumeration value="CARTAO_CORPORATIVO" />
+		<xs:enumeration value="FATURADO" />
+		<xs:enumeration value="CARTAO_RENDIMENTO" />
+		<xs:enumeration value="RECURSO_PROPRIO" />
+		<xs:enumeration value="DEBITO_EM_CONTA" />
+		<xs:enumeration value="CREDITO_EM_CONTA" />
+	</xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="fluxo">
+  	<xs:sequence>
+		<xs:element name="status" type="ns1:presacaoContasStatus" minOccurs="1" maxOccurs="1" />
+		<xs:element name="data" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+		<xs:element name="matricula" type="xs:string" minOccurs="1"/>
+		<xs:element name="nome" type="xs:string" minOccurs="1"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="fluxos">
+  	<xs:sequence>
+		<xs:element name="fluxo" type="tns:fluxo" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

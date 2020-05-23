@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2-b13 (branches/2.2-6964; 2012-01-09T18:04:18+0000) JAXWS-RI/2.2.6-promoted-b20 JAXWS/2.2 svn-revision#unknown. -->
+<xs:schema xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/beans" xmlns:ns4="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" xmlns:ns3="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel" xmlns:ns2="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo"
+	xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans">
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="AutorizacaoViagemService1.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo" schemaLocation="AutorizacaoViagemService4.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel" schemaLocation="AutorizacaoViagemService2.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" schemaLocation="AutorizacaoViagemService3.xsd" />
+	<xs:complexType name="resultCommon">
+		<xs:sequence>
+			<xs:element name="msg" type="xs:string" minOccurs="0" />
+			<xs:element name="resultadoAcao" type="ns1:resultadoAcao" minOccurs="0" />
+			<xs:element name="stackTrace" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="solicitacao">
+		<xs:sequence>
+			<xs:element name="idSolicitacao" type="xs:int" />
+			<xs:element name="localVenda" type="xs:string" minOccurs="0" />
+			<xs:element name="dataAprovacao" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="descricaoCentroCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="descricaoSubCentroCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="dataCriacaoSv" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="solicitante" type="tns:passageiro" minOccurs="0" />
+			<xs:element name="aprovador" type="tns:passageiro" minOccurs="0" />
+			<xs:element name="dataConclusao" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="regional" type="xs:string" minOccurs="0" />
+			<xs:element name="centroDeCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="subCentroDeCusto" type="xs:string" minOccurs="0" />
+			<xs:element name="contaContabil" type="xs:string" minOccurs="0" />
+			<xs:element name="nacional" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="codigoCliente" type="xs:string" minOccurs="0" />
+			<xs:element name="passageiros" type="tns:passageiros" minOccurs="0" />
+			<xs:element name="aereos" type="ns2:aereos" minOccurs="0" />
+			<xs:element name="hoteis" type="ns3:hoteis" minOccurs="0" />
+			<xs:element name="carros" type="ns4:carros" minOccurs="0" />
+			<xs:element name="motivoViagem" type="xs:string" minOccurs="0" />
+			<xs:element name="codigoAutorizacaoViagem" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="passageiro">
+		<xs:sequence>
+			<xs:element name="idPassageiro" type="xs:int" />
+			<xs:element name="nome" type="xs:string" minOccurs="0" />
+			<xs:element name="sobrenome" type="xs:string" minOccurs="0" />
+			<xs:element name="matricula" type="xs:string" minOccurs="0" />
+			<xs:element name="departamento" type="xs:string" minOccurs="0" />
+			<xs:element name="tipoPassageiro" type="ns1:tipoPassageiro" minOccurs="0" />
+			<xs:element name="tipoDocumento" type="ns1:tipoDocumento" minOccurs="0" />
+			<xs:element name="valorDocumento" type="xs:string" minOccurs="0" />
+			<xs:element name="email" type="xs:string" minOccurs="0" />
+			<xs:element name="dataNascimento" type="xs:date" minOccurs="0" />
+			<xs:element name="sexo" type="ns1:sexo" minOccurs="0" />
+			<xs:element name="empresa" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="passageiros">
+		<xs:sequence>
+			<xs:element name="passageiro" type="tns:passageiro" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="tipoDocumento">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MATRICULA" />
+			<xs:enumeration value="CPF" />
+			<xs:enumeration value="PASSAPORTE" />
+			<xs:enumeration value="RG" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

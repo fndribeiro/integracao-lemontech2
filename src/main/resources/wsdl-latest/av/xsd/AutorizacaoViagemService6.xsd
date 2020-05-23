@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2-b13 (branches/2.2-6964; 2012-01-09T18:04:18+0000) JAXWS-RI/2.2.6-promoted-b20 JAXWS/2.2 svn-revision#unknown. -->
+<xs:schema xmlns:tns="http://av.ws.wsselfbooking.lemontech.com.br/" xmlns:ns5="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" xmlns:ns4="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel" xmlns:ns3="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo"
+	xmlns:ns2="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" xmlns:ns1="http://lemontech.com.br/selfbooking/wsselfbooking/beans" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://av.ws.wsselfbooking.lemontech.com.br/">
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans" schemaLocation="AutorizacaoViagemService5.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/types" schemaLocation="AutorizacaoViagemService1.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/aereo" schemaLocation="AutorizacaoViagemService4.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/hotel" schemaLocation="AutorizacaoViagemService2.xsd" />
+	<xs:import namespace="http://lemontech.com.br/selfbooking/wsselfbooking/beans/carro" schemaLocation="AutorizacaoViagemService3.xsd" />
+	<xs:element name="RepositoryException" type="tns:RepositoryException" />
+	<xs:element name="ativarOuInativarAutorizacaoViagem" type="tns:ativarOuInativarAutorizacaoViagem" />
+	<xs:element name="ativarOuInativarAutorizacaoViagemResponse" type="tns:ativarOuInativarAutorizacaoViagemResponse" />
+	<xs:element name="atualizarDataExpiracao" type="tns:atualizarDataExpiracao" />
+	<xs:element name="atualizarDataExpiracaoResponse" type="tns:atualizarDataExpiracaoResponse" />
+	<xs:element name="consultarAutorizacaoViagem" type="tns:consultarAutorizacaoViagem" />
+	<xs:element name="consultarAutorizacaoViagemResponse" type="tns:consultarAutorizacaoViagemResponse" />
+	<xs:element name="consultarAutorizacaoViagemSemVinculo" type="tns:consultarAutorizacaoViagemSemVinculo" />
+	<xs:element name="consultarAutorizacaoViagemSemVinculoResponse" type="tns:consultarAutorizacaoViagemSemVinculoResponse" />
+	<xs:element name="consultarSolicitacao" type="tns:consultarSolicitacao" />
+	<xs:element name="consultarSolicitacaoResponse" type="tns:consultarSolicitacaoResponse" />
+	<xs:element name="consultarSolicitacaoSemAutorizacaoDeViagem" type="tns:consultarSolicitacaoSemAutorizacaoDeViagem" />
+	<xs:element name="consultarSolicitacaoSemAutorizacaoDeViagemResponse" type="tns:consultarSolicitacaoSemAutorizacaoDeViagemResponse" />
+	<xs:element name="credential" nillable="true" type="tns:credential" />
+	<xs:element name="criarAutorizacaoViagem" type="tns:criarAutorizacaoViagem" />
+	<xs:element name="criarAutorizacaoViagemResponse" type="tns:criarAutorizacaoViagemResponse" />
+	<xs:element name="disponibilizarOuIndisponibilizarAutorizacaoViagem" type="tns:disponibilizarOuIndisponibilizarAutorizacaoViagem" />
+	<xs:element name="disponibilizarOuIndisponibilizarAutorizacaoViagemResponse" type="tns:disponibilizarOuIndisponibilizarAutorizacaoViagemResponse" />
+	<xs:element name="pesquisarSolicitacaoNaoSincronizada" type="tns:pesquisarSolicitacaoNaoSincronizada" />
+	<xs:element name="pesquisarSolicitacaoNaoSincronizadaResponse" type="tns:pesquisarSolicitacaoNaoSincronizadaResponse" />
+	<xs:element name="sincronizarSolicitacao" type="tns:sincronizarSolicitacao" />
+	<xs:element name="sincronizarSolicitacaoResponse" type="tns:sincronizarSolicitacaoResponse" />
+	<xs:complexType name="pesquisarSolicitacaoNaoSincronizada">
+		<xs:sequence>
+			<xs:element name="pesquisarSolicitacaoRQ" type="tns:pesquisarSolicitacaoNaoSincronizadaRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="pesquisarSolicitacaoNaoSincronizadaRQ">
+		<xs:sequence>
+			<xs:element name="dataInicial" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="dataFinal" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="registroInicial" type="xs:int" minOccurs="0" />
+			<xs:element name="quantidadeRegistros" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="credential">
+		<xs:sequence>
+			<xs:element name="username" type="xs:string" />
+			<xs:element name="password" type="xs:string" />
+			<xs:element name="keyClient" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="pesquisarSolicitacaoNaoSincronizadaResponse">
+		<xs:sequence>
+			<xs:element name="pesquisarSolicitacaoRS" type="tns:pesquisarSolicitacaoNaoSincronizadaRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="pesquisarSolicitacaoNaoSincronizadaRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+			<xs:element name="numeroSolicitacoes" type="xs:int" minOccurs="0" />
+			<xs:element name="solicitacoes" type="ns1:solicitacao" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagem">
+		<xs:sequence>
+			<xs:element name="consultarAutorizacaoViagemRQ" type="tns:consultarAutorizacaoViagemRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemRQ">
+		<xs:sequence>
+			<xs:element name="codigoAutorizacaoViagem" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemResponse">
+		<xs:sequence>
+			<xs:element name="consultarAutorizacaoViagemRS" type="tns:consultarAutorizacaoViagemRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+			<xs:element name="codigoAutorizacao" type="xs:string" minOccurs="0" />
+			<xs:element name="codigoExtra" type="xs:string" minOccurs="0" />
+			<xs:element name="dataCriacao" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="dataExpiracao" type="xs:date" minOccurs="0" />
+			<xs:element name="nomePassageiro" type="xs:string" minOccurs="0" />
+			<xs:element name="matriculaPassageiro" type="xs:string" minOccurs="0" />
+			<xs:element name="finalidade" type="xs:string" minOccurs="0" />
+			<xs:element name="origem" type="xs:string" minOccurs="0" />
+			<xs:element name="destino" type="xs:string" minOccurs="0" />
+			<xs:element name="ativo" type="xs:boolean" />
+			<xs:element name="disponivel" type="xs:boolean" />
+			<xs:element name="solicitacoes" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="solicitacao" type="ns1:solicitacao" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemSemVinculo">
+		<xs:sequence>
+			<xs:element name="consultarAutorizacaoViagemSemVinculoRQ" type="tns:consultarAutorizacaoViagemSemVinculoRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemSemVinculoRQ">
+		<xs:sequence>
+			<xs:element name="dataInicial" type="xs:date" minOccurs="0" />
+			<xs:element name="dataFinal" type="xs:date" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemSemVinculoResponse">
+		<xs:sequence>
+			<xs:element name="consultarAutorizacaoViagemSemVinculoRS" type="tns:consultarAutorizacaoViagemSemVinculoRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarAutorizacaoViagemSemVinculoRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+			<xs:element name="codigos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="atualizarDataExpiracao">
+		<xs:sequence>
+			<xs:element name="atualizarDataExpiracaoRQ" type="tns:atualizarDataExpiracaoRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="atualizarDataExpiracaoRQ">
+		<xs:sequence>
+			<xs:element name="codigoAutorizacaoViagem" type="xs:string" />
+			<xs:element name="dataExpiracao" type="xs:date" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="atualizarDataExpiracaoResponse">
+		<xs:sequence>
+			<xs:element name="atualizarDataExpiracaoRS" type="tns:atualizarDataExpiracaoRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="atualizarDataExpiracaoRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoSemAutorizacaoDeViagem">
+		<xs:sequence>
+			<xs:element name="consultarSolicitacaoSemAutorizacaoDeViagemRQ" type="tns:consultarSolicitacaoSemAutorizacaoDeViagemRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoSemAutorizacaoDeViagemRQ">
+		<xs:sequence>
+			<xs:element name="dataFinal" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="dataInicial" type="xs:dateTime" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoSemAutorizacaoDeViagemResponse">
+		<xs:sequence>
+			<xs:element name="consultarSolicitacaoSemAutorizacaoDeViagemRS" type="tns:consultarSolicitacaoSemAutorizacaoDeViagemRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoSemAutorizacaoDeViagemRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+			<xs:element name="solicitacoes" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SolicitacaoSemAutorizacaoDeViagem" type="tns:solicitacaoSemAutorizacaoDeViagem" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="solicitacaoSemAutorizacaoDeViagem">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="0" />
+			<xs:element name="tipoDocumento" type="ns1:tipoDocumento" minOccurs="0" />
+			<xs:element name="valorDocumento" type="xs:string" minOccurs="0" />
+			<xs:element name="nome" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="disponibilizarOuIndisponibilizarAutorizacaoViagem">
+		<xs:sequence>
+			<xs:element name="disponibilizarOuIndisponibilizarAutorizacaoViagemRQ" type="tns:disponibilizarOuIndisponibilizarAutorizacaoViagemRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="disponibilizarOuIndisponibilizarAutorizacaoViagemRQ">
+		<xs:sequence>
+			<xs:element name="codigoAutorizacaoViagem" type="xs:string" />
+			<xs:element name="disponivel" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="disponibilizarOuIndisponibilizarAutorizacaoViagemResponse">
+		<xs:sequence>
+			<xs:element name="disponibilizarOuIndisponibilizarAutorizacaoViagemRS" type="tns:disponibilizarOuIndisponibilizarAutorizacaoViagemRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="disponibilizarOuIndisponibilizarAutorizacaoViagemRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="criarAutorizacaoViagem">
+		<xs:sequence>
+			<xs:element name="criarAutorizacaoViagemRQ" type="tns:criarAutorizacaoViagemRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="criarAutorizacaoViagemRQ">
+		<xs:sequence>
+			<xs:element name="passageiro" type="ns1:passageiro" />
+			<xs:element name="codigoAutorizacao" type="xs:string" />
+			<xs:element name="codigoExtra" type="xs:string" minOccurs="0" />
+			<xs:element name="dataExpiracao" type="xs:date" />
+			<xs:element name="finalidade" type="xs:string" />
+			<xs:element name="origem" type="xs:string" minOccurs="0" />
+			<xs:element name="destino" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="criarAutorizacaoViagemResponse">
+		<xs:sequence>
+			<xs:element name="criarAutorizacaoViagemRS" type="tns:criarAutorizacaoViagemRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="criarAutorizacaoViagemRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ativarOuInativarAutorizacaoViagem">
+		<xs:sequence>
+			<xs:element name="ativarOuInativarAutorizacaoViagemRQ" type="tns:ativarOuInativarAutorizacaoViagemRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ativarOuInativarAutorizacaoViagemRQ">
+		<xs:sequence>
+			<xs:element name="codigoAutorizacaoViagem" type="xs:string" />
+			<xs:element name="ativo" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ativarOuInativarAutorizacaoViagemResponse">
+		<xs:sequence>
+			<xs:element name="ativarOuInativarAutorizacaoViagemRS" type="tns:ativarOuInativarAutorizacaoViagemRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ativarOuInativarAutorizacaoViagemRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacao">
+		<xs:sequence>
+			<xs:element name="consultarSolicitacaoRQ" type="tns:consultarSolicitacaoRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoRQ">
+		<xs:sequence>
+			<xs:element name="idSolicitacaoRef" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="consultaSolicitacaoRS" type="tns:consultarSolicitacaoRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="consultarSolicitacaoRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+			<xs:element name="solicitacao" type="ns1:solicitacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sincronizarSolicitacao">
+		<xs:sequence>
+			<xs:element name="sincronizarSolicitacaoRQ" type="tns:sincronizarSolicitacaoRQ" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sincronizarSolicitacaoRQ">
+		<xs:sequence>
+			<xs:element name="idSolicitacao" type="xs:int" />
+			<xs:element name="sincronizado" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sincronizarSolicitacaoResponse">
+		<xs:sequence>
+			<xs:element name="sincronizarSolicitacaoRS" type="tns:sincronizarSolicitacaoRS" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sincronizarSolicitacaoRS">
+		<xs:sequence>
+			<xs:element name="resultCommon" type="ns1:resultCommon" minOccurs="0" />
+			<xs:element name="solicitacao" type="ns1:solicitacao" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RepositoryException">
+		<xs:sequence>
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

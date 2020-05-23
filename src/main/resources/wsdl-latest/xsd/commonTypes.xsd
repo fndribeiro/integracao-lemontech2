@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema
+	xmlns:tns="http://lemontech.com.br/selfbooking/wsselfbooking/common/types"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+	targetNamespace="http://lemontech.com.br/selfbooking/wsselfbooking/common/types">
+
+	<xs:simpleType name="ddi">
+		<xs:annotation>
+			<xs:documentation>DDI. Exemplo: Brasil = 55, USA = 1
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="3"></xs:maxLength>
+			<xs:pattern value="\d+"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ddd">
+		<xs:annotation>
+			<xs:documentation>DDD. Exemplo: Sao Paulo = 11, Rio de Janeiro = 21
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="3"></xs:maxLength>
+			<xs:pattern value="\d+"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="telefone">
+		<xs:annotation>
+			<xs:documentation>Telefone</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="11"></xs:maxLength>
+			<xs:pattern value="\d+"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="codigoElemento">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="100"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="codigoElemento50">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="50"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="matricula">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="descricaoElemento50">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="50"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="descricaoElemento100">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="100"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="descricaoElemento255">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="255"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="email">
+		<xs:annotation>
+			<xs:documentation>Email valido. Exemplo: suporte@lemontech.com.br
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="100"></xs:maxLength>
+			<xs:pattern
+				value="[A-Za-z0-9!#-'\*\+\-/=\?\^_`\{-~]+(\.[A-Za-z0-9!#-'\*\+\-/=\?\^_`\{-~]+)*@[A-Za-z0-9!#-'\*\+\-/=\?\^_`\{-~]+(\.[A-Za-z0-9!#-'\*\+\-/=\?\^_`\{-~]+)*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="YYYYMM">
+		<xs:annotation>
+			<xs:documentation>Formato YYYY-MM. Exemplo : 2012-12
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:gYearMonth" />
+	</xs:simpleType>
+
+	<xs:simpleType name="cnpjCpf">
+		<xs:annotation>
+			<xs:documentation>Formato para validar cnpj ou cpf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="((\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2})|(\d{3}\.\d{3}\.\d{3}\-\d{2}))" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="cpf">
+		<xs:annotation>
+			<xs:documentation>Formato para validar cpf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="(\d{3}\.\d{3}\.\d{3}\-\d{2})" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="identificadorBackoffice">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="8"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="corporateIdGol">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="50"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
